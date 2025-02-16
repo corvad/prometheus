@@ -1,0 +1,19 @@
+cc_library(
+  name = "liblua",
+  srcs = ["@lua//:srcs"],
+  hdrs = ["@lua//:srcs_headers"],
+  strip_include_prefix = "src",
+)
+
+cc_library(
+  name = "libsol3",
+  hdrs = ["@sol//file","@sol_config//file"],
+  strip_include_prefix = "file",
+  include_prefix = "sol/",
+)
+
+cc_binary(
+  name = "prometheus",
+  srcs = glob(["*.cc"]),
+  deps = [":libsol3",":liblua"],
+)
