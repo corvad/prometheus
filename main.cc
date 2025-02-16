@@ -1,16 +1,9 @@
-#define SOL_ALL_SAFETIES_ON 1
-#include "sol/sol.hpp"
 #include <iostream>
+#include "State.h"
 
 int main(int, char*[]) {
-  std::cout << "=== opening a state ===" << std::endl;
-
-  sol::state lua;
-  // open some common libraries
-  lua.open_libraries(sol::lib::base, sol::lib::package);
-  lua.script("print('bark bark bark!')");
-
-  std::cout << std::endl;
-
+  State* state = new State();
+  state->run("print('bark bark bark!')");
+  state->runFile("/workspaces/microlua/init.lua");
   return 0;
 }
