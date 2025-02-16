@@ -20,4 +20,9 @@ void State::runFile(std::string path){
     lua.script_file(path);
     Output::info(path + " done running.");
 }
-  
+
+void State::runFile(std::string path){
+    Output::info("Running " + path);
+    lua.script_file(path);
+    Output::info(path + " done running.");
+}
